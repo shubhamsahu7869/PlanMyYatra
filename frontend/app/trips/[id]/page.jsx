@@ -283,6 +283,14 @@ export default function TripDetailsPage() {
                     </span>
                   ))}
                 </div>
+                <div className="mt-6 grid gap-3 text-sm text-slate-200 sm:grid-cols-4">
+                  {["Flight", "Train", "Stay", "Explore"].map((item) => (
+                    <div key={item} className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4 text-center">
+                      <div className="text-2xl text-orange-300">{item === "Flight" ? "✈" : item === "Train" ? "☷" : item === "Stay" ? "⌂" : "⌖"}</div>
+                      <p className="mt-2">{item}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="space-y-6">

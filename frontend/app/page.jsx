@@ -25,6 +25,13 @@ const highlights = [
   "Private user dashboard",
 ];
 
+const travelModes = [
+  { icon: "✈", title: "Flights", text: "Plan arrival windows and long-distance travel." },
+  { icon: "☷", title: "Trains", text: "Balance scenic routes with practical city transfers." },
+  { icon: "⌂", title: "Stays", text: "Compare hotel choices around your daily route." },
+  { icon: "⌖", title: "Places", text: "Discover landmarks, food stops, viewpoints, and markets." },
+];
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#061322] text-slate-100">
@@ -88,7 +95,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-16 sm:px-10 lg:grid-cols-[0.9fr,1.1fr]">
+      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-10">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Travel essentials</p>
+            <h2 className="mt-3 text-3xl font-semibold text-white">Built around how trips actually move.</h2>
+          </div>
+          <p className="max-w-xl text-sm leading-6 text-slate-300">
+            PlanMyYatra brings transport, places, stays, and local experiences into one simple flow.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {travelModes.map((mode) => (
+            <div key={mode.title} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500/15 text-2xl text-orange-300">
+                {mode.icon}
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-white">{mode.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">{mode.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-8 px-6 pb-16 sm:px-10 lg:grid-cols-[0.9fr,1.1fr]">
         <div>
           <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Trip workspace</p>
           <h2 className="mt-3 text-3xl font-semibold text-white">Everything your plan needs, organized in one place.</h2>

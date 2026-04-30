@@ -65,6 +65,24 @@ export default function DashboardPage() {
           </button>
         </div>
 
+        <div className="mb-8 overflow-hidden rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80">
+          <div className="grid md:grid-cols-[1fr,1.4fr]">
+            <div className="p-6">
+              <p className="text-sm uppercase tracking-[0.3em] text-orange-300">Travel board</p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">Flights, trains, stays, and places in one planning space.</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-300">Keep every saved itinerary ready to open, edit, or improve with a new mood.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2 p-4 text-center text-sm text-slate-200 sm:grid-cols-4">
+              {["Flight", "Train", "Hotel", "Route"].map((item) => (
+                <div key={item} className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">
+                  <div className="text-2xl text-orange-300">{item === "Flight" ? "✈" : item === "Train" ? "☷" : item === "Hotel" ? "⌂" : "⌖"}</div>
+                  <p className="mt-2">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {loading ? (
           <div className="grid gap-6 lg:grid-cols-2">
             {[1, 2, 3, 4].map((item) => (
@@ -96,7 +114,7 @@ export default function DashboardPage() {
                     <h2 className="mt-2 text-2xl font-semibold text-white">{trip.destination}</h2>
                     <p className="mt-2 text-slate-400">{trip.numberOfDays} day{trip.numberOfDays > 1 ? "s" : ""} trip</p>
                   </div>
-                  <div className="text-right text-sm text-slate-400">{trip.interests.join(" • ")}</div>
+                  <div className="text-right text-sm text-slate-400">{trip.interests.join(" - ")}</div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <button
@@ -121,4 +139,5 @@ export default function DashboardPage() {
     </main>
   );
 }
+
 

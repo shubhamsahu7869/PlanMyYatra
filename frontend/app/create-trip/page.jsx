@@ -88,6 +88,23 @@ export default function CreateTripPage() {
             </div>
           </div>
 
+          <div className="mb-7 rounded-3xl border border-teal-900/60 bg-[#061322]/80 p-5">
+            <div className="grid gap-4 md:grid-cols-[0.8fr,1.2fr] md:items-center">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-orange-300">Route preview</p>
+                <h2 className="mt-2 text-xl font-semibold text-white">Choose the destination. We shape the journey.</h2>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-200">
+                {["Home", "Flight / Train", "Hotel", "Places", "Memories"].map((item, index) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <span className="rounded-full border border-teal-800/70 bg-[#0b1b2b] px-3 py-2">{item}</span>
+                    {index < 4 && <span className="text-teal-500">→</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid gap-6 md:grid-cols-2">
               <label className="block space-y-2 text-sm">
