@@ -8,6 +8,17 @@ import { useAuth } from "../../../hooks/useAuth";
 
 const sections = ["morning", "afternoon", "evening", "foodSuggestion", "travelTip"];
 const moodOptions = ["Relaxed", "Packed", "Romantic", "Family Friendly", "Adventure Heavy", "Cultural"];
+const inrRates = {
+  USD: 83,
+  EUR: 90,
+  GBP: 105,
+  AED: 22.6,
+  JPY: 0.56,
+  SGD: 62,
+  THB: 2.3,
+  AUD: 55,
+  CAD: 61,
+};
 
 export default function TripDetailsPage() {
   const params = useParams();
@@ -28,6 +39,7 @@ export default function TripDetailsPage() {
   const [regenerateLoading, setRegenerateLoading] = useState(false);
   const [mood, setMood] = useState("Relaxed");
   const [moodLoading, setMoodLoading] = useState(false);
+  const [inrRate, setInrRate] = useState("");
 
   useEffect(() => {
     if (!user && !isLoading) {
@@ -48,6 +60,8 @@ export default function TripDetailsPage() {
       try {
         const response = await apiGet(`/api/trips/${tripId}`);
         setTrip(response.trip);
+        const currency = response.trip?.budgetEstimate?.currency;
+        setInrRate(currency === "INR" ? "1" : String(inrRates[currency] || ""));
       } catch (err) {
         setError(err.message || "Unable to load trip");
       } finally {
@@ -452,6 +466,33 @@ export default function TripDetailsPage() {
                   <p className="text-sm text-slate-400">Total estimate</p>
                   <p className="mt-1 text-2xl font-semibold">{trip.budgetEstimate.currency} {trip.budgetEstimate.total}</p>
                 </div>
+                {trip.budgetEstimate.currency !== "INR" && (
+                  <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                      <label className="block flex-1 space-y-2 text-sm">
+                        <span className="text-slate-300">Convert total to INR</span>
+                        <input
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value={inrRate}
+                          onChange={(event) => setInrRate(event.target.value)}
+                          placeholder={`1 ${trip.budgetEstimate.currency} = INR`}
+                          className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-emerald-400"
+                        />
+                      </label>
+                      <div className="rounded-2xl border border-emerald-500/20 bg-slate-950/80 px-4 py-3">
+                        <p className="text-xs uppercase tracking-[0.2em] text-emerald-300">Indian rupees</p>
+                        <p className="mt-1 text-xl font-semibold text-white">
+                          INR {inrRate ? Math.round(Number(inrRate) * Number(trip.budgetEstimate.total)).toLocaleString("en-IN") : "--"}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="mt-3 text-xs text-slate-400">
+                      Enter the current exchange rate for 1 {trip.budgetEstimate.currency}. This conversion is only for quick reference.
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
