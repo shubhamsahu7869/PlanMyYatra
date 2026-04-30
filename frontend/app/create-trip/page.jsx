@@ -63,13 +63,27 @@ export default function CreateTripPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
-      <section className="mx-auto max-w-4xl px-6 py-10 sm:px-10">
+      <section className="mx-auto max-w-5xl px-6 py-10 sm:px-10">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl shadow-slate-950/20">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Start planning</p>
-              <h1 className="mt-2 text-3xl font-semibold text-white">Create your next trip</h1>
-              <p className="mt-2 text-slate-400">Enter your destination, budget, and travel interests to generate a complete plan.</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Trip input form</p>
+              <h1 className="mt-2 text-3xl font-semibold text-white">Generate a structured AI travel plan</h1>
+              <p className="mt-2 max-w-3xl text-slate-400">
+                Enter the same details required in the assessment: destination, number of days, budget type, and interests.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-7 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+              AI returns day-by-day itinerary sections.
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+              Budget is estimated by destination and preference.
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+              Hotels are suggested for the destination and budget.
             </div>
           </div>
 
@@ -82,7 +96,7 @@ export default function CreateTripPage() {
                   value={destination}
                   onChange={(event) => setDestination(event.target.value)}
                   className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
-                  placeholder="e.g. Lisbon"
+                  placeholder="e.g. Gwalior, Tokyo, Dubai"
                   required
                 />
               </label>
@@ -141,7 +155,7 @@ export default function CreateTripPage() {
               disabled={loading}
               className="w-full rounded-2xl bg-sky-500 px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {loading ? "Generating your AI itinerary..." : "Generate Trip"}
+              {loading ? "Generating itinerary, budget, and hotels..." : "Generate Trip"}
             </button>
           </form>
         </div>

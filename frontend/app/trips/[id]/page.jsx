@@ -164,9 +164,9 @@ export default function TripDetailsPage() {
       <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Trip details</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-sky-400">AI itinerary workspace</p>
             <h1 className="mt-2 text-3xl font-semibold">{trip?.destination || "Trip details"}</h1>
-            <p className="mt-2 text-slate-400">Review your itinerary, budget, hotels, and mood settings.</p>
+            <p className="mt-2 text-slate-400">Review the generated day plan, budget estimate, hotel suggestions, and itinerary controls.</p>
           </div>
           <Link
             href="/dashboard"
@@ -200,6 +200,11 @@ export default function TripDetailsPage() {
                     <p className="mt-2 text-xl font-semibold text-white">{trip.budgetType}</p>
                   </div>
                 </div>
+                <div className="mt-6 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Protected user-specific trip data</div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Editable itinerary sections</div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">AI regeneration and mood optimization</div>
+                </div>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {trip.interests.map((interest) => (
                     <span key={interest} className="rounded-full border border-slate-700 bg-slate-950/80 px-3 py-1 text-xs text-slate-300">
@@ -227,7 +232,9 @@ export default function TripDetailsPage() {
                         return (
                           <div key={section} className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
                             <div className="flex items-center justify-between gap-4">
-                              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">{section}</p>
+                              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">
+                                {section === "foodSuggestion" ? "Food suggestion" : section === "travelTip" ? "Local travel tip" : section}
+                              </p>
                               <div className="flex items-center gap-2">
                                 <button
                                   type="button"
@@ -287,8 +294,8 @@ export default function TripDetailsPage() {
               </div>
 
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-                <h2 className="text-xl font-semibold text-white">Add activity</h2>
-                <p className="mt-2 text-slate-400">Select a day and section, then add a custom activity to your itinerary.</p>
+                <h2 className="text-xl font-semibold text-white">Editable itinerary</h2>
+                <p className="mt-2 text-slate-400">Add a new activity to any day or section without affecting another user&apos;s trip.</p>
                 <div className="mt-5 grid gap-4 sm:grid-cols-3">
                   <label className="space-y-2 text-sm">
                     <span>Day</span>
@@ -340,8 +347,8 @@ export default function TripDetailsPage() {
               </div>
 
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-                <h2 className="text-xl font-semibold text-white">Regenerate a day</h2>
-                <p className="mt-2 text-slate-400">Refresh one day with a custom prompt to match your plans.</p>
+                <h2 className="text-xl font-semibold text-white">Regenerate a specific day</h2>
+                <p className="mt-2 text-slate-400">Ask the AI to rebuild one day, for example with more outdoor activities or fewer markets.</p>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2 text-sm">
                     <span>Day</span>
@@ -383,8 +390,9 @@ export default function TripDetailsPage() {
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Mood Optimizer</p>
-                    <h2 className="mt-2 text-xl font-semibold text-white">Customize your trip mood</h2>
+                    <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Creative feature</p>
+                    <h2 className="mt-2 text-xl font-semibold text-white">Trip Mood Optimizer</h2>
+                    <p className="mt-2 text-sm text-slate-400">Personalize the itinerary by the feeling of the trip, not only by budget and interests.</p>
                   </div>
                 </div>
                 <label className="mt-5 block space-y-2 text-sm">
@@ -413,6 +421,7 @@ export default function TripDetailsPage() {
 
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Budget estimate</h2>
+                <p className="mt-2 text-sm text-slate-400">Estimated by destination, number of days, and budget preference.</p>
                 <div className="mt-4 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
                   <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
                     <p className="text-slate-400">Flights</p>
@@ -447,6 +456,7 @@ export default function TripDetailsPage() {
 
               <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Hotel suggestions</h2>
+                <p className="mt-2 text-sm text-slate-400">Recommended options based on destination, budget, and traveler fit.</p>
                 <div className="mt-5 space-y-4">
                   {trip.hotelSuggestions.map((hotel) => (
                     <div key={hotel.name} className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
