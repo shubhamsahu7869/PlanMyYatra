@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="mx-auto grid min-h-[calc(100vh-73px)] max-w-7xl items-center gap-10 px-6 py-12 sm:px-10 lg:grid-cols-[1.05fr,0.95fr]">
         <div className="space-y-7">
           <div className="inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">
-            Trao Full-Stack Assessment
+            AI Travel Planner
           </div>
           <div className="space-y-5">
             <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
