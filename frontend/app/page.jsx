@@ -12,7 +12,7 @@ export default function HomePage() {
           <div className="space-y-5">
             <BrandLogo />
             <h1 className="max-w-3xl text-3xl font-semibold leading-snug text-white sm:text-5xl">
-              PlanMyYatra crafts complete, editable trip itineraries.
+              PlanMyYatra crafts complete trip itineraries.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
               Turn a destination into a polished plan with places to visit, local costs, stays, and flexible day edits.
