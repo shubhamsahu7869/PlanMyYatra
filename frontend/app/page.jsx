@@ -1,6 +1,30 @@
 import Link from "next/link";
 import BrandLogo from "../components/BrandLogo";
 
+const steps = [
+  {
+    title: "Tell us your route",
+    text: "Add the destination, trip length, budget style, and the interests that matter most.",
+  },
+  {
+    title: "Get a complete plan",
+    text: "Receive places to visit, daily activities, budget estimates, and stay suggestions in one view.",
+  },
+  {
+    title: "Shape the journey",
+    text: "Edit activities, regenerate a specific day, or tune the trip with a mood like relaxed or adventure-heavy.",
+  },
+];
+
+const highlights = [
+  "Exact places to visit",
+  "Budget estimate with INR conversion",
+  "Hotel and stay suggestions",
+  "Editable daily schedule",
+  "Mood-based personalization",
+  "Private user dashboard",
+];
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#061322] text-slate-100">
@@ -46,7 +70,82 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="border-y border-teal-900/50 bg-[#0b1b2b]/70 px-6 py-14 sm:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300">How it works</p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <div key={step.title} className="rounded-3xl border border-teal-900/60 bg-[#061322]/80 p-6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-500 text-sm font-bold text-[#061322]">
+                  {index + 1}
+                </div>
+                <h2 className="mt-5 text-xl font-semibold text-white">{step.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-16 sm:px-10 lg:grid-cols-[0.9fr,1.1fr]">
+        <div>
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Trip workspace</p>
+          <h2 className="mt-3 text-3xl font-semibold text-white">Everything your plan needs, organized in one place.</h2>
+          <p className="mt-4 max-w-xl leading-7 text-slate-300">
+            PlanMyYatra keeps the trip practical: where to go, what it may cost, where to stay, and how each day should feel.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <div key={item} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-5 text-slate-200">
+              <div className="mb-4 h-1.5 w-12 rounded-full bg-orange-400" />
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-8 px-6 pb-16 sm:px-10 lg:grid-cols-2">
+        <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Mood optimizer</p>
+          <h2 className="mt-3 text-2xl font-semibold text-white">Tune the same trip for a different feeling.</h2>
+          <p className="mt-4 leading-7 text-slate-300">
+            Choose Relaxed, Packed, Romantic, Family Friendly, Adventure Heavy, or Cultural and reshape the itinerary without starting over.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["Relaxed", "Packed", "Cultural", "Adventure Heavy"].map((mood) => (
+              <span key={mood} className="rounded-full border border-teal-800/70 bg-[#061322]/80 px-4 py-2 text-sm text-teal-100">
+                {mood}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Budget clarity</p>
+          <h2 className="mt-3 text-2xl font-semibold text-white">See the cost and compare it in INR.</h2>
+          <p className="mt-4 leading-7 text-slate-300">
+            The budget panel breaks down flights, stays, food, transport, activities, and gives a quick INR conversion for foreign currencies.
+          </p>
+          <div className="mt-6 rounded-2xl border border-orange-400/30 bg-orange-400/5 p-4">
+            <p className="text-xs uppercase tracking-[0.25em] text-orange-300">Quick reference</p>
+            <p className="mt-2 text-2xl font-semibold text-white">USD 650 = INR 53,950</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20 sm:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 rounded-3xl border border-teal-900/60 bg-[#0b1b2b] p-8 text-center shadow-2xl shadow-black/20 md:flex-row md:text-left">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Ready to plan?</p>
+            <h2 className="mt-3 text-3xl font-semibold text-white">Create your next yatra in minutes.</h2>
+          </div>
+          <Link href="/register" className="inline-flex justify-center rounded-full bg-teal-500 px-7 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400">
+            Get started
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }
-
