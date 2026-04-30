@@ -40,6 +40,8 @@ export default function TripDetailsPage() {
   const [mood, setMood] = useState("Relaxed");
   const [moodLoading, setMoodLoading] = useState(false);
   const [inrRate, setInrRate] = useState("");
+  const [rateLoading, setRateLoading] = useState(false);
+  const [rateError, setRateError] = useState("");
 
   useEffect(() => {
     if (!user && !isLoading) {
@@ -61,7 +63,7 @@ export default function TripDetailsPage() {
         const response = await apiGet(`/api/trips/${tripId}`);
         setTrip(response.trip);
         const currency = response.trip?.budgetEstimate?.currency;
-        setInrRate(currency === "INR" ? "1" : String(inrRates[currency] || ""));
+        setInrRate(currency === "INR" ? "1" : "");
       } catch (err) {
         setError(err.message || "Unable to load trip");
       } finally {
@@ -71,6 +73,36 @@ export default function TripDetailsPage() {
 
     fetchTrip();
   }, [user, isLoading, params.id, router]);
+
+  useEffect(() => {
+    const currency = trip?.budgetEstimate?.currency;
+    if (!currency || currency === "INR") return;
+
+    const fetchRate = async () => {
+      setRateLoading(true);
+      setRateError("");
+
+      try {
+        const response = await fetch(`https://api.frankfurter.app/latest?from=${currency}&to=INR`);
+        const data = await response.json();
+        const rate = data?.rates?.INR;
+
+        if (!response.ok || !rate) {
+          throw new Error("Rate unavailable");
+        }
+
+        setInrRate(String(rate));
+      } catch {
+        const fallbackRate = inrRates[currency];
+        setInrRate(fallbackRate ? String(fallbackRate) : "");
+        setRateError("Live rate unavailable, showing an approximate conversion.");
+      } finally {
+        setRateLoading(false);
+      }
+    };
+
+    fetchRate();
+  }, [trip?.budgetEstimate?.currency]);
 
   const beginEdit = (dayNumber, section, value) => {
     setEditingKey(`${dayNumber}-${section}`);
@@ -469,18 +501,16 @@ export default function TripDetailsPage() {
                 {trip.budgetEstimate.currency !== "INR" && (
                   <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                      <label className="block flex-1 space-y-2 text-sm">
-                        <span className="text-slate-300">Convert total to INR</span>
-                        <input
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={inrRate}
-                          onChange={(event) => setInrRate(event.target.value)}
-                          placeholder={`1 ${trip.budgetEstimate.currency} = INR`}
-                          className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-emerald-400"
-                        />
-                      </label>
+                      <div className="flex-1">
+                        <p className="text-sm text-slate-300">Converted total in INR</p>
+                        <p className="mt-2 text-xs text-slate-400">
+                          {rateLoading
+                            ? "Fetching latest exchange rate..."
+                            : inrRate
+                              ? `1 ${trip.budgetEstimate.currency} = INR ${Number(inrRate).toFixed(2)}`
+                              : "Exchange rate unavailable"}
+                        </p>
+                      </div>
                       <div className="rounded-2xl border border-emerald-500/20 bg-slate-950/80 px-4 py-3">
                         <p className="text-xs uppercase tracking-[0.2em] text-emerald-300">Indian rupees</p>
                         <p className="mt-1 text-xl font-semibold text-white">
@@ -489,7 +519,7 @@ export default function TripDetailsPage() {
                       </div>
                     </div>
                     <p className="mt-3 text-xs text-slate-400">
-                      Enter the current exchange rate for 1 {trip.budgetEstimate.currency}. This conversion is only for quick reference.
+                      {rateError || "This conversion uses the latest available exchange rate and is only for quick reference."}
                     </p>
                   </div>
                 )}
