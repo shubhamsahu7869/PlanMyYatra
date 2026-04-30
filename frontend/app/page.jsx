@@ -60,6 +60,9 @@ export default function HomePage() {
             <Link href="/register" className="inline-flex justify-center rounded-full bg-teal-500 px-7 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400">
               Start planning
             </Link>
+            <Link href="/explore" className="inline-flex justify-center rounded-full border border-orange-400/60 px-7 py-3 text-sm font-semibold text-orange-200 transition hover:border-orange-300 hover:bg-orange-400/10">
+              Explore picks
+            </Link>
             <Link href="/login" className="inline-flex justify-center rounded-full border border-teal-800/70 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-teal-500">
               Login
             </Link>

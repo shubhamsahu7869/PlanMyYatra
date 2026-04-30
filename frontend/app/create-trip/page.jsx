@@ -24,6 +24,37 @@ export default function CreateTripPage() {
     }
   }, [user, isLoading, router]);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const suggestedDestination = searchParams.get("destination");
+    const suggestedDays = Number(searchParams.get("days"));
+    const suggestedBudget = searchParams.get("budget");
+    const suggestedInterests = searchParams.get("interests");
+
+    if (suggestedDestination) {
+      setDestination(suggestedDestination);
+    }
+
+    if (suggestedDays > 0) {
+      setNumberOfDays(suggestedDays);
+    }
+
+    if (["Low", "Medium", "High"].includes(suggestedBudget)) {
+      setBudgetType(suggestedBudget);
+    }
+
+    if (suggestedInterests) {
+      const nextInterests = suggestedInterests
+        .split(",")
+        .map((item) => item.trim())
+        .filter((item) => interestsOptions.includes(item));
+
+      if (nextInterests.length > 0) {
+        setInterests(nextInterests);
+      }
+    }
+  }, []);
+
   const toggleInterest = (interest) => {
     setInterests((current) =>
       current.includes(interest) ? current.filter((item) => item !== interest) : [...current, interest]

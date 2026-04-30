@@ -23,6 +23,9 @@ export default function Navbar() {
         <nav className="flex items-center gap-3 text-sm font-medium text-slate-200">
           {token ? (
             <>
+              <Link href="/explore" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
+                Explore
+              </Link>
               <Link href="/dashboard" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
                 Dashboard
               </Link>
@@ -35,6 +38,9 @@ export default function Navbar() {
             </>
           ) : (
             <>
+              <Link href="/explore" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
+                Explore
+              </Link>
               <Link href="/login" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
                 Login
               </Link>
