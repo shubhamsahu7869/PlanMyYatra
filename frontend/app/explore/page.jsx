@@ -1,4 +1,13 @@
+"use client";
+
 import Link from "next/link";
+
+const fallbackImage = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80";
+
+function useFallbackImage(event) {
+  event.currentTarget.onerror = null;
+  event.currentTarget.src = fallbackImage;
+}
 
 const destinations = [
   {
@@ -47,7 +56,7 @@ const topExperiences = [
   {
     rank: 1,
     title: "Universal Studios Singapore",
-    image: "https://images.unsplash.com/photo-1623841675698-8c8c29abf78f?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=900&q=80",
     query: "destination=Singapore&interests=Adventure,Shopping,Food",
   },
   {
@@ -154,7 +163,7 @@ export default function ExplorePage() {
                 href={cardLink(destination.query)}
                 className="group block rounded-3xl border border-teal-900/50 bg-[#061322]/75 p-3 transition hover:-translate-y-1 hover:border-teal-500 hover:bg-[#123044]"
               >
-                <img src={destination.image} alt={destination.name} className="h-48 w-full rounded-2xl object-cover" />
+                <img src={destination.image} alt={destination.name} onError={useFallbackImage} className="h-48 w-full rounded-2xl object-cover" />
                 <h3 className="mt-5 text-center text-xl font-bold text-white">{destination.name}</h3>
               </Link>
             ))}
@@ -176,7 +185,7 @@ export default function ExplorePage() {
             {topExperiences.map((experience) => (
               <Link key={experience.title} href={cardLink(experience.query)} className="group block rounded-3xl border border-teal-900/50 bg-[#061322]/70 p-3 transition hover:-translate-y-1 hover:border-orange-400/70">
                 <div className="relative overflow-hidden rounded-2xl">
-                  <img src={experience.image} alt={experience.title} className="h-56 w-full object-cover transition duration-300 group-hover:scale-105" />
+                  <img src={experience.image} alt={experience.title} onError={useFallbackImage} className="h-56 w-full object-cover transition duration-300 group-hover:scale-105" />
                   <div className="absolute left-5 top-0 rounded-b-2xl bg-orange-400 px-5 py-3 text-2xl font-bold text-[#061322]">{experience.rank}</div>
                 </div>
                 <h3 className="mt-5 text-xl font-bold leading-snug text-white">{experience.title}</h3>
@@ -197,7 +206,7 @@ export default function ExplorePage() {
                 href={cardLink(activity.query)}
                 className="group overflow-hidden rounded-2xl border border-teal-900/60 bg-[#061322]/80 shadow-sm transition hover:-translate-y-1 hover:border-teal-500 hover:shadow-xl"
               >
-                <img src={activity.image} alt={activity.title} className="h-56 w-full object-cover transition duration-300 group-hover:scale-105" />
+                <img src={activity.image} alt={activity.title} onError={useFallbackImage} className="h-56 w-full object-cover transition duration-300 group-hover:scale-105" />
                 <div className="p-4">
                   <h3 className="min-h-[56px] text-lg font-bold leading-snug text-white">{activity.title}</h3>
                   <p className="mt-4 text-sm text-teal-200">{activity.price}</p>
