@@ -207,17 +207,17 @@ export default function TripDetailsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#061322] text-slate-100">
       <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-sky-400">AI itinerary workspace</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-teal-300">AI itinerary workspace</p>
             <h1 className="mt-2 text-3xl font-semibold">{trip?.destination || "Trip details"}</h1>
             <p className="mt-2 text-slate-400">Review your plan, tune each day, compare costs, and refine the trip mood.</p>
           </div>
           <Link
             href="/dashboard"
-            className="rounded-full border border-slate-700 px-5 py-3 text-sm text-slate-200 transition hover:border-slate-500"
+            className="rounded-full border border-teal-800/70 px-5 py-3 text-sm text-slate-200 transition hover:border-teal-500"
           >
             Back to Dashboard
           </Link>
@@ -227,7 +227,7 @@ export default function TripDetailsPage() {
           <div className="grid gap-8 xl:grid-cols-[1.7fr,0.95fr]">
             <div className="space-y-6">
               {[1, 2].map((item) => (
-                <div key={item} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+                <div key={item} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                   <SkeletonBlock className="h-4 w-24" />
                   <SkeletonBlock className="mt-4 h-8 w-72" />
                   <div className="mt-6 space-y-4">
@@ -239,11 +239,11 @@ export default function TripDetailsPage() {
               ))}
             </div>
             <aside className="space-y-6">
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <SkeletonBlock className="h-6 w-40" />
                 <SkeletonBlock className="mt-5 h-28 w-full" />
               </div>
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <SkeletonBlock className="h-6 w-44" />
                 <SkeletonBlock className="mt-5 h-40 w-full" />
               </div>
@@ -252,11 +252,11 @@ export default function TripDetailsPage() {
         ) : error ? (
           <div className="rounded-3xl border border-rose-500 bg-rose-950/10 p-8 text-rose-200">{error}</div>
         ) : !trip ? (
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-10 text-center text-slate-400">Trip not found.</div>
+          <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-10 text-center text-slate-400">Trip not found.</div>
         ) : (
           <div className="grid gap-8 xl:grid-cols-[1.7fr,0.95fr]">
             <div className="space-y-8">
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <div className="grid gap-4 sm:grid-cols-3">
                   <div>
                     <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Destination</p>
@@ -272,13 +272,13 @@ export default function TripDetailsPage() {
                   </div>
                 </div>
                 <div className="mt-6 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Saved privately to your account</div>
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Editable itinerary sections</div>
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">AI regeneration and mood optimization</div>
+                  <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">Saved privately to your account</div>
+                  <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">Editable itinerary sections</div>
+                  <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">AI regeneration and mood optimization</div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {trip.interests.map((interest) => (
-                    <span key={interest} className="rounded-full border border-slate-700 bg-slate-950/80 px-3 py-1 text-xs text-slate-300">
+                    <span key={interest} className="rounded-full border border-teal-800/70 bg-[#061322]/80 px-3 py-1 text-xs text-slate-300">
                       {interest}
                     </span>
                   ))}
@@ -287,10 +287,10 @@ export default function TripDetailsPage() {
 
               <div className="space-y-6">
                 {trip.itinerary.map((day) => (
-                  <div key={day.dayNumber} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+                  <div key={day.dayNumber} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Day {day.dayNumber}</p>
+                        <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Day {day.dayNumber}</p>
                         <h2 className="mt-2 text-2xl font-semibold text-white">{day.title}</h2>
                       </div>
                     </div>
@@ -301,7 +301,7 @@ export default function TripDetailsPage() {
                         const isEditing = editingKey === key;
 
                         return (
-                          <div key={section} className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+                          <div key={section} className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">
                             <div className="flex items-center justify-between gap-4">
                               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">
                                 {section === "foodSuggestion" ? "Food suggestion" : section === "travelTip" ? "Local travel tip" : section}
@@ -310,7 +310,7 @@ export default function TripDetailsPage() {
                                 <button
                                   type="button"
                                   onClick={() => beginEdit(day.dayNumber, section, value)}
-                                  className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 transition hover:border-sky-400"
+                                  className="rounded-full border border-teal-800/70 px-3 py-1 text-xs text-slate-200 transition hover:border-teal-400"
                                 >
                                   Edit
                                 </button>
@@ -330,14 +330,14 @@ export default function TripDetailsPage() {
                                   value={editValue}
                                   onChange={(event) => setEditValue(event.target.value)}
                                   rows={3}
-                                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                                  className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                                 />
                                 <div className="flex items-center gap-3">
                                   <button
                                     type="button"
                                     onClick={() => handleSaveEdit(day.dayNumber, section)}
                                     disabled={savingActivity}
-                                    className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+                                    className="rounded-full bg-teal-500 px-4 py-2 text-sm font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
                                   >
                                     Save
                                   </button>
@@ -347,7 +347,7 @@ export default function TripDetailsPage() {
                                       setEditingKey(null);
                                       setEditValue("");
                                     }}
-                                    className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-200 transition hover:border-slate-500"
+                                    className="rounded-full border border-teal-800/70 px-4 py-2 text-sm text-slate-200 transition hover:border-teal-500"
                                   >
                                     Cancel
                                   </button>
@@ -364,14 +364,14 @@ export default function TripDetailsPage() {
                 ))}
               </div>
 
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Editable itinerary</h2>
                 <p className="mt-2 text-slate-400">Add a new activity to any day or section without affecting another user&apos;s trip.</p>
                 <div className="mt-5 grid gap-4 sm:grid-cols-3">
                   <label className="space-y-2 text-sm">
                     <span>Day</span>
                     <select
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                      className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                       value={addDay}
                       onChange={(event) => setAddDay(Number(event.target.value))}
                     >
@@ -385,7 +385,7 @@ export default function TripDetailsPage() {
                   <label className="space-y-2 text-sm">
                     <span>Section</span>
                     <select
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                      className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                       value={addSection}
                       onChange={(event) => setAddSection(event.target.value)}
                     >
@@ -403,7 +403,7 @@ export default function TripDetailsPage() {
                     rows={3}
                     value={addText}
                     onChange={(event) => setAddText(event.target.value)}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                    className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                     placeholder="Add a new activity or note to this section"
                   />
                 </label>
@@ -411,20 +411,20 @@ export default function TripDetailsPage() {
                   type="button"
                   onClick={handleAddActivity}
                   disabled={addLoading || !addText.trim()}
-                  className="mt-4 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 rounded-2xl bg-teal-500 px-5 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {addLoading ? <LoadingSpinner label="Adding activity" /> : "Add activity"}
                 </button>
               </div>
 
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Regenerate a specific day</h2>
                 <p className="mt-2 text-slate-400">Ask the AI to rebuild one day, for example with more outdoor activities or fewer markets.</p>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2 text-sm">
                     <span>Day</span>
                     <select
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                      className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                       value={regenerateDay}
                       onChange={(event) => setRegenerateDay(Number(event.target.value))}
                     >
@@ -442,7 +442,7 @@ export default function TripDetailsPage() {
                     rows={3}
                     value={regeneratePrompt}
                     onChange={(event) => setRegeneratePrompt(event.target.value)}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                    className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                     placeholder="Regenerate Day 3 with more outdoor activities and less shopping."
                   />
                 </label>
@@ -450,7 +450,7 @@ export default function TripDetailsPage() {
                   type="button"
                   onClick={handleRegenerateDay}
                   disabled={regenerateLoading || !regeneratePrompt.trim()}
-                  className="mt-4 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 rounded-2xl bg-teal-500 px-5 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {regenerateLoading ? <LoadingSpinner label="Regenerating" /> : "Regenerate Day"}
                 </button>
@@ -458,10 +458,10 @@ export default function TripDetailsPage() {
             </div>
 
             <aside className="space-y-6">
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Creative feature</p>
+                    <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Creative feature</p>
                     <h2 className="mt-2 text-xl font-semibold text-white">Trip Mood Optimizer</h2>
                     <p className="mt-2 text-sm text-slate-400">Personalize the itinerary by the feeling of the trip, not only by budget and interests.</p>
                   </div>
@@ -471,7 +471,7 @@ export default function TripDetailsPage() {
                   <select
                     value={mood}
                     onChange={(event) => setMood(event.target.value)}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                    className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                   >
                     {moodOptions.map((option) => (
                       <option key={option} value={option}>
@@ -484,47 +484,47 @@ export default function TripDetailsPage() {
                   type="button"
                   onClick={handleOptimizeMood}
                   disabled={moodLoading}
-                  className="mt-4 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 rounded-2xl bg-teal-500 px-5 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {moodLoading ? <LoadingSpinner label="Optimizing" /> : "Optimize Trip"}
                 </button>
               </div>
 
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Budget estimate</h2>
                 <p className="mt-2 text-sm text-slate-400">Estimated by destination, number of days, and budget preference.</p>
                 <div className="mt-4 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Flights</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.flights}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Accommodation</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.accommodation}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Food</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.food}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Transport</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.transport}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Activities</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.activities}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                  <div className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                     <p className="text-slate-400">Miscellaneous</p>
                     <p className="mt-2 font-semibold text-white">{trip.budgetEstimate.currency} {trip.budgetEstimate.miscellaneous}</p>
                   </div>
                 </div>
-                <div className="mt-4 rounded-2xl border border-sky-500/30 bg-slate-950/90 p-4 text-white">
+                <div className="mt-4 rounded-2xl border border-teal-500/30 bg-[#061322]/90 p-4 text-white">
                   <p className="text-sm text-slate-400">Total estimate</p>
                   <p className="mt-1 text-2xl font-semibold">{trip.budgetEstimate.currency} {trip.budgetEstimate.total}</p>
                 </div>
                 {trip.budgetEstimate.currency !== "INR" && (
-                  <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+                  <div className="mt-4 rounded-2xl border border-orange-400/30 bg-orange-400/5 p-4">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                       <div className="flex-1">
                         <p className="text-sm text-slate-300">Converted total in INR</p>
@@ -536,8 +536,8 @@ export default function TripDetailsPage() {
                               : "Exchange rate unavailable"}
                         </p>
                       </div>
-                      <div className="rounded-2xl border border-emerald-500/20 bg-slate-950/80 px-4 py-3">
-                        <p className="text-xs uppercase tracking-[0.2em] text-emerald-300">Indian rupees</p>
+                      <div className="rounded-2xl border border-orange-400/20 bg-[#061322]/80 px-4 py-3">
+                        <p className="text-xs uppercase tracking-[0.2em] text-orange-300">Indian rupees</p>
                         <p className="mt-1 text-xl font-semibold text-white">
                           INR {inrRate ? Math.round(Number(inrRate) * Number(trip.budgetEstimate.total)).toLocaleString("en-IN") : "--"}
                         </p>
@@ -550,21 +550,21 @@ export default function TripDetailsPage() {
                 )}
               </div>
 
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <h2 className="text-xl font-semibold text-white">Hotel suggestions</h2>
                 <p className="mt-2 text-sm text-slate-400">Recommended options based on destination, budget, and traveler fit.</p>
                 <div className="mt-5 space-y-4">
                   {trip.hotelSuggestions.map((hotel) => (
-                    <div key={hotel.name} className="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+                    <div key={hotel.name} className="rounded-2xl border border-teal-800/70 bg-[#061322]/80 p-4">
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <p className="text-lg font-semibold text-white">{hotel.name}</p>
                           <p className="text-sm text-slate-400">{hotel.category}</p>
                         </div>
-                        <p className="text-sm font-semibold text-sky-300">{trip.budgetEstimate.currency} {hotel.pricePerNight}/night</p>
+                        <p className="text-sm font-semibold text-teal-300">{trip.budgetEstimate.currency} {hotel.pricePerNight}/night</p>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2 text-sm text-slate-400">
-                        <span className="rounded-full border border-slate-700 px-3 py-1">Rating {hotel.rating}</span>
+                        <span className="rounded-full border border-teal-800/70 px-3 py-1">Rating {hotel.rating}</span>
                       </div>
                       <p className="mt-3 text-slate-300">{hotel.reason}</p>
                     </div>
@@ -578,3 +578,4 @@ export default function TripDetailsPage() {
     </main>
   );
 }
+

@@ -49,17 +49,17 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#061322] text-slate-100">
       <section className="mx-auto max-w-6xl px-6 py-10 sm:px-10">
-        <div className="mb-8 flex flex-col gap-4 rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl shadow-slate-950/20 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-8 flex flex-col gap-4 rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-8 shadow-2xl shadow-black/20 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Dashboard</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Dashboard</p>
             <h1 className="mt-3 text-3xl font-semibold text-white">Your trips</h1>
             <p className="mt-2 text-slate-400">Manage your current plans, review AI itinerary details, or create a new trip.</p>
           </div>
           <button
             onClick={() => router.push("/create-trip")}
-            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+            className="inline-flex items-center justify-center rounded-full bg-teal-500 px-6 py-3 text-sm font-semibold text-[#061322] transition hover:bg-orange-400"
           >
             Create Trip
           </button>
@@ -68,7 +68,7 @@ export default function DashboardPage() {
         {loading ? (
           <div className="grid gap-6 lg:grid-cols-2">
             {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
+              <div key={item} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6">
                 <SkeletonBlock className="h-4 w-32" />
                 <SkeletonBlock className="mt-4 h-8 w-52" />
                 <SkeletonBlock className="mt-3 h-4 w-40" />
@@ -82,17 +82,17 @@ export default function DashboardPage() {
         ) : error ? (
           <div className="rounded-3xl border border-rose-500 bg-rose-950/10 p-8 text-rose-200">{error}</div>
         ) : trips.length === 0 ? (
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-10 text-center text-slate-400">
+          <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-10 text-center text-slate-400">
             <p className="text-lg font-semibold text-white">No trips yet</p>
             <p className="mt-2">Start a new AI-generated trip plan to see your itinerary here.</p>
           </div>
         ) : (
           <div className="grid gap-6 lg:grid-cols-2">
             {trips.map((trip) => (
-              <div key={trip._id} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/10">
+              <div key={trip._id} className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-6 shadow-xl shadow-black/10">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-sky-400">{trip.budgetType} Budget</p>
+                    <p className="text-sm uppercase tracking-[0.3em] text-teal-300">{trip.budgetType} Budget</p>
                     <h2 className="mt-2 text-2xl font-semibold text-white">{trip.destination}</h2>
                     <p className="mt-2 text-slate-400">{trip.numberOfDays} day{trip.numberOfDays > 1 ? "s" : ""} trip</p>
                   </div>
@@ -101,7 +101,7 @@ export default function DashboardPage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                   <button
                     onClick={() => router.push(`/trips/${trip._id}`)}
-                    className="rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-sky-100 transition hover:bg-slate-700"
+                    className="rounded-full bg-[#123044] px-4 py-2 text-sm font-medium text-teal-100 transition hover:bg-teal-900/70"
                   >
                     View
                   </button>
@@ -121,3 +121,4 @@ export default function DashboardPage() {
     </main>
   );
 }
+

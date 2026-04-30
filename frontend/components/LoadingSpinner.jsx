@@ -8,5 +8,6 @@ export function LoadingSpinner({ label = "Loading" }) {
 }
 
 export function SkeletonBlock({ className = "" }) {
-  return <div className={`animate-pulse rounded-2xl bg-slate-800/80 ${className}`} />;
+  return <div className={`animate-pulse rounded-2xl bg-teal-900/35 ${className}`} />;
 }
+

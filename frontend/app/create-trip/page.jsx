@@ -63,12 +63,12 @@ export default function CreateTripPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#061322] text-slate-100">
       <section className="mx-auto max-w-5xl px-6 py-10 sm:px-10">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl shadow-slate-950/20">
+        <div className="rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-8 shadow-2xl shadow-black/20">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Trip input form</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-teal-300">Trip input form</p>
               <h1 className="mt-2 text-3xl font-semibold text-white">Generate a structured AI travel plan</h1>
               <p className="mt-2 max-w-3xl text-slate-400">
                 Tell us where you want to go, how long you are staying, and what kind of trip you enjoy.
@@ -77,13 +77,13 @@ export default function CreateTripPage() {
           </div>
 
           <div className="mb-7 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+            <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">
               Discover exact places, activities, and local food stops.
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+            <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">
               See a practical cost breakdown in the right currency.
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
+            <div className="rounded-2xl border border-teal-900/60 bg-[#061322]/80 p-4">
               Get stay options that match your travel style.
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function CreateTripPage() {
                   type="text"
                   value={destination}
                   onChange={(event) => setDestination(event.target.value)}
-                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                  className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                   placeholder="e.g. Gwalior, Tokyo, Dubai"
                   required
                 />
@@ -110,7 +110,7 @@ export default function CreateTripPage() {
                   max={14}
                   value={numberOfDays}
                   onChange={(event) => setNumberOfDays(Number(event.target.value))}
-                  className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                  className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                   required
                 />
               </label>
@@ -121,7 +121,7 @@ export default function CreateTripPage() {
               <select
                 value={budgetType}
                 onChange={(event) => setBudgetType(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
               >
                 <option>Low</option>
                 <option>Medium</option>
@@ -139,8 +139,8 @@ export default function CreateTripPage() {
                     onClick={() => toggleInterest(interest)}
                     className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${
                       interests.includes(interest)
-                        ? "border-sky-500 bg-sky-500/10 text-sky-100"
-                        : "border-slate-700 bg-slate-950 text-slate-300 hover:border-slate-500"
+                        ? "border-teal-500 bg-teal-500/10 text-teal-100"
+                        : "border-teal-800/70 bg-[#061322] text-slate-300 hover:border-teal-500"
                     }`}
                   >
                     {interest}
@@ -154,7 +154,7 @@ export default function CreateTripPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-sky-500 px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-2xl bg-teal-500 px-6 py-4 text-sm font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? <LoadingSpinner label="Generating itinerary, budget, and hotels" /> : "Generate Trip"}
             </button>
@@ -164,3 +164,4 @@ export default function CreateTripPage() {
     </main>
   );
 }
+

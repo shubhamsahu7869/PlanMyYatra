@@ -39,9 +39,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#061322] text-slate-100">
       <section className="mx-auto flex min-h-screen max-w-3xl items-center px-6 py-16 sm:px-10">
-        <div className="w-full rounded-3xl border border-slate-800 bg-slate-900/80 p-10 shadow-2xl shadow-slate-950/20">
+        <div className="w-full rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-10 shadow-2xl shadow-black/20">
           <h1 className="text-3xl font-semibold">Create your travel account</h1>
           <p className="mt-2 text-slate-400">Register to save trips, generate AI itineraries, and manage your mood-optimized plans.</p>
           <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
@@ -51,7 +51,7 @@ export default function RegisterPage() {
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
               />
             </label>
@@ -61,7 +61,7 @@ export default function RegisterPage() {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
               />
             </label>
@@ -71,7 +71,7 @@ export default function RegisterPage() {
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
                 minLength={6}
               />
@@ -82,7 +82,7 @@ export default function RegisterPage() {
                 type="password"
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
                 minLength={6}
               />
@@ -91,16 +91,17 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-sky-500 px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-2xl bg-teal-500 px-4 py-3 font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? <LoadingSpinner label="Creating account" /> : "Register"}
             </button>
           </form>
           <p className="mt-6 text-center text-sm text-slate-400">
-            Already have an account? <Link href="/login" className="text-sky-300 hover:text-sky-200">Login</Link>
+            Already have an account? <Link href="/login" className="text-teal-300 hover:text-orange-200">Login</Link>
           </p>
         </div>
       </section>
     </main>
   );
 }
+

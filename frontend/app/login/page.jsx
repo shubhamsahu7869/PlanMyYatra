@@ -31,9 +31,9 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#061322] text-slate-100">
       <section className="mx-auto flex min-h-screen max-w-3xl items-center px-6 py-16 sm:px-10">
-        <div className="w-full rounded-3xl border border-slate-800 bg-slate-900/80 p-10 shadow-2xl shadow-slate-950/20">
+        <div className="w-full rounded-3xl border border-teal-900/60 bg-[#0b1b2b]/80 p-10 shadow-2xl shadow-black/20">
           <h1 className="text-3xl font-semibold">Welcome back</h1>
           <p className="mt-2 text-slate-400">Login to access your travel plans and AI itinerary generator.</p>
           <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
@@ -43,7 +43,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
               />
             </label>
@@ -53,7 +53,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
+                className="w-full rounded-2xl border border-teal-800/70 bg-[#061322] px-4 py-3 text-slate-100 outline-none transition focus:border-teal-400"
                 required
               />
             </label>
@@ -61,16 +61,17 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-sky-500 px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-2xl bg-teal-500 px-4 py-3 font-semibold text-[#061322] transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? <LoadingSpinner label="Signing in" /> : "Log in"}
             </button>
           </form>
           <p className="mt-6 text-center text-sm text-slate-400">
-            New here? <Link href="/register" className="text-sky-300 hover:text-sky-200">Create an account</Link>
+            New here? <Link href="/register" className="text-teal-300 hover:text-orange-200">Create an account</Link>
           </p>
         </div>
       </section>
     </main>
   );
 }
+

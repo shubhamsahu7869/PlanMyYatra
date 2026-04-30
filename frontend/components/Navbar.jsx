@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="border-b border-slate-800 bg-slate-950/95 px-6 py-4 backdrop-blur">
+    <header className="border-b border-teal-900/60 bg-[#061322]/95 px-6 py-4 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link href="/" aria-label="PlanMyYatra home">
           <BrandLogo />
@@ -23,22 +23,22 @@ export default function Navbar() {
         <nav className="flex items-center gap-3 text-sm font-medium text-slate-200">
           {token ? (
             <>
-              <Link href="/dashboard" className="rounded-full px-4 py-2 transition hover:bg-slate-800/80">
+              <Link href="/dashboard" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
                 Dashboard
               </Link>
-              <Link href="/create-trip" className="rounded-full px-4 py-2 transition hover:bg-slate-800/80">
+              <Link href="/create-trip" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
                 Create Trip
               </Link>
-              <button onClick={handleLogout} className="rounded-full bg-sky-500 px-4 py-2 text-slate-950 transition hover:bg-sky-400">
+              <button onClick={handleLogout} className="rounded-full bg-teal-500 px-4 py-2 text-[#061322] transition hover:bg-orange-400">
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link href="/login" className="rounded-full px-4 py-2 transition hover:bg-slate-800/80">
+              <Link href="/login" className="rounded-full px-4 py-2 transition hover:bg-[#123044]/80">
                 Login
               </Link>
-              <Link href="/register" className="rounded-full bg-sky-500 px-4 py-2 text-slate-950 transition hover:bg-sky-400">
+              <Link href="/register" className="rounded-full bg-teal-500 px-4 py-2 text-[#061322] transition hover:bg-orange-400">
                 Register
               </Link>
             </>
@@ -48,3 +48,4 @@ export default function Navbar() {
     </header>
   );
 }
+
