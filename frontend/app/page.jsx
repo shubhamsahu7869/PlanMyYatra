@@ -1,12 +1,5 @@
 import Link from "next/link";
 
-const features = [
-  "Secure login and user-specific dashboards",
-  "Destination, days, budget, and interest-based planning",
-  "AI day-by-day itinerary with budget estimate",
-  "Editable activities, day regeneration, and hotel suggestions",
-];
-
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -33,29 +26,21 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/30">
-          <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-sky-400">Example trip</p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">3 days in Rishikesh</h2>
-              </div>
-              <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-300">Medium budget</span>
+        <div className="relative min-h-[520px] overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl shadow-slate-950/30">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+            alt="Scenic mountain road for travel planning"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+            <div className="max-w-md rounded-3xl border border-white/10 bg-slate-950/75 p-5 backdrop-blur">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Plan smarter</p>
+              <h2 className="mt-3 text-2xl font-semibold text-white">From idea to itinerary in one workspace.</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                Generate day plans, estimate budgets, compare hotel options, and refine each day around the way you want the trip to feel.
+              </p>
             </div>
-            <div className="mt-6 space-y-3">
-              {["Day 1: Triveni Ghat, Beatles Ashram, Ram Jhula", "Day 2: Neer Garh Waterfall, Shivpuri rafting", "Day 3: Parmarth Niketan, Laxman Jhula market"].map((item) => (
-                <div key={item} className="rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-200">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {features.map((feature) => (
-              <div key={feature} className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300">
-                {feature}
-              </div>
-            ))}
           </div>
         </div>
       </section>
