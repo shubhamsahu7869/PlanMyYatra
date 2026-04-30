@@ -6,70 +6,27 @@ import { useEffect, useState } from "react";
 import { apiGet, apiPost } from "../../../lib/api";
 import { useAuth } from "../../../hooks/useAuth";
 
-type ItinerarySection = "morning" | "afternoon" | "evening" | "foodSuggestion" | "travelTip";
-
-interface ItineraryDay {
-  dayNumber: number;
-  title: string;
-  morning: string;
-  afternoon: string;
-  evening: string;
-  foodSuggestion: string;
-  travelTip: string;
-}
-
-interface BudgetEstimate {
-  currency: string;
-  flights: number;
-  accommodation: number;
-  food: number;
-  transport: number;
-  activities: number;
-  miscellaneous: number;
-  total: number;
-}
-
-interface HotelSuggestion {
-  name: string;
-  category: string;
-  pricePerNight: number;
-  rating: number;
-  reason: string;
-}
-
-interface TripDetails {
-  _id: string;
-  destination: string;
-  numberOfDays: number;
-  budgetType: string;
-  interests: string[];
-  itinerary: ItineraryDay[];
-  budgetEstimate: BudgetEstimate;
-  hotelSuggestions: HotelSuggestion[];
-  mood?: string;
-}
-
-const sections: ItinerarySection[] = ["morning", "afternoon", "evening", "foodSuggestion", "travelTip"];
-const moodOptions = ["Relaxed", "Packed", "Romantic", "Family Friendly", "Adventure Heavy", "Cultural"] as const;
+const sections = ["morning", "afternoon", "evening", "foodSuggestion", "travelTip"];
+const moodOptions = ["Relaxed", "Packed", "Romantic", "Family Friendly", "Adventure Heavy", "Cultural"];
 
 export default function TripDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const { user, isLoading } = useAuth(true);
-  const [trip, setTrip] = useState<TripDetails | null>(null);
+  const [trip, setTrip] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [editingKey, setEditingKey] = useState<string | null>(null);
+  const [editingKey, setEditingKey] = useState(null);
   const [editValue, setEditValue] = useState("");
   const [savingActivity, setSavingActivity] = useState(false);
   const [addDay, setAddDay] = useState(1);
-  const [addSection, setAddSection] = useState<keyof ItineraryDay>("morning");
+  const [addSection, setAddSection] = useState("morning");
   const [addText, setAddText] = useState("");
   const [addLoading, setAddLoading] = useState(false);
   const [regenerateDay, setRegenerateDay] = useState(1);
   const [regeneratePrompt, setRegeneratePrompt] = useState("");
   const [regenerateLoading, setRegenerateLoading] = useState(false);
-  const [mood, setMood] = useState<typeof moodOptions[number]>("Relaxed");
+  const [mood, setMood] = useState("Relaxed");
   const [moodLoading, setMoodLoading] = useState(false);
 
   useEffect(() => {
@@ -89,9 +46,9 @@ export default function TripDetailsPage() {
       setError("");
       setLoading(true);
       try {
-        const response = await apiGet<{ trip: TripDetails }>(`/api/trips/${tripId}`);
+        const response = await apiGet(`/api/trips/${tripId}`);
         setTrip(response.trip);
-      } catch (err: any) {
+      } catch (err) {
         setError(err.message || "Unable to load trip");
       } finally {
         setLoading(false);
@@ -101,18 +58,18 @@ export default function TripDetailsPage() {
     fetchTrip();
   }, [user, isLoading, params.id, router]);
 
-  const beginEdit = (dayNumber: number, section: ItinerarySection, value: string) => {
+  const beginEdit = (dayNumber, section, value) => {
     setEditingKey(`${dayNumber}-${section}`);
     setEditValue(value);
   };
 
-  const handleSaveEdit = async (dayNumber: number, section: ItinerarySection) => {
+  const handleSaveEdit = async (dayNumber, section) => {
     if (!trip) return;
     setSavingActivity(true);
     setError("");
 
     try {
-      const response = await apiPost<{ trip: TripDetails }>(`/api/trips/${params.id}/update-activity`, {
+      const response = await apiPost(`/api/trips/${params.id}/update-activity`, {
         dayNumber,
         section,
         activity: editValue,
@@ -120,25 +77,25 @@ export default function TripDetailsPage() {
       setTrip(response.trip);
       setEditingKey(null);
       setEditValue("");
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to save activity");
     } finally {
       setSavingActivity(false);
     }
   };
 
-  const handleDeleteActivity = async (dayNumber: number, section: ItinerarySection) => {
+  const handleDeleteActivity = async (dayNumber, section) => {
     if (!trip) return;
     setSavingActivity(true);
     setError("");
 
     try {
-      const response = await apiPost<{ trip: TripDetails }>(`/api/trips/${params.id}/delete-activity`, {
+      const response = await apiPost(`/api/trips/${params.id}/delete-activity`, {
         dayNumber,
         section,
       });
       setTrip(response.trip);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to delete activity");
     } finally {
       setSavingActivity(false);
@@ -151,14 +108,14 @@ export default function TripDetailsPage() {
     setError("");
 
     try {
-      const response = await apiPost<{ trip: TripDetails }>(`/api/trips/${params.id}/add-activity`, {
+      const response = await apiPost(`/api/trips/${params.id}/add-activity`, {
         dayNumber: addDay,
         section: addSection,
         activity: addText,
       });
       setTrip(response.trip);
       setAddText("");
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to add activity");
     } finally {
       setAddLoading(false);
@@ -174,13 +131,13 @@ export default function TripDetailsPage() {
     setError("");
 
     try {
-      const response = await apiPost<{ trip: TripDetails }>(`/api/trips/${params.id}/regenerate-day`, {
+      const response = await apiPost(`/api/trips/${params.id}/regenerate-day`, {
         dayNumber: regenerateDay,
         prompt: regeneratePrompt,
       });
       setTrip(response.trip);
       setRegeneratePrompt("");
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to regenerate day");
     } finally {
       setRegenerateLoading(false);
@@ -193,9 +150,9 @@ export default function TripDetailsPage() {
     setError("");
 
     try {
-      const response = await apiPost<{ trip: TripDetails }>(`/api/trips/${params.id}/optimize-mood`, { mood });
+      const response = await apiPost(`/api/trips/${params.id}/optimize-mood`, { mood });
       setTrip(response.trip);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to optimize mood");
     } finally {
       setMoodLoading(false);
@@ -352,7 +309,7 @@ export default function TripDetailsPage() {
                     <select
                       className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
                       value={addSection}
-                      onChange={(event) => setAddSection(event.target.value as keyof ItineraryDay)}
+                      onChange={(event) => setAddSection(event.target.value)}
                     >
                       {sections.map((section) => (
                         <option key={section} value={section}>
@@ -434,7 +391,7 @@ export default function TripDetailsPage() {
                   <span>Trip mood</span>
                   <select
                     value={mood}
-                    onChange={(event) => setMood(event.target.value as typeof moodOptions[number])}
+                    onChange={(event) => setMood(event.target.value)}
                     className="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-sky-400"
                   >
                     {moodOptions.map((option) => (

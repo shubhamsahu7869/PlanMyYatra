@@ -1,6 +1,6 @@
 export const TOKEN_KEY = "travel_planner_token";
 
-export function saveToken(token: string) {
+export function saveToken(token) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(TOKEN_KEY, token);
 }
@@ -38,5 +38,5 @@ export async function fetchCurrentUser() {
     throw new Error(data?.message || "Unable to fetch user");
   }
 
-  return data.user as { id: string; name: string; email: string };
+  return data.user;
 }

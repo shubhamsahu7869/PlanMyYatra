@@ -8,8 +8,8 @@ This project helps users register, log in, create trips, generate AI-powered iti
 
 ## Tech Stack
 
-- Frontend: Next.js, React, TypeScript, Tailwind CSS
-- Backend: Node.js, Express, TypeScript
+- Frontend: Next.js, React, JavaScript, Tailwind CSS
+- Backend: Node.js, Express, JavaScript
 - Database: MongoDB with Mongoose
 - Auth: JWT + bcrypt
 - Validation: Zod
@@ -25,7 +25,7 @@ This project helps users register, log in, create trips, generate AI-powered iti
   - `src/routes/`
   - `src/services/`
   - `src/app.ts`
-  - `src/server.ts`
+  - `src/server.js`
 - `frontend/`
   - `app/`
   - `components/`
@@ -49,7 +49,7 @@ This project helps users register, log in, create trips, generate AI-powered iti
    - Set the following values:
      - `MONGODB_URI` for your Atlas or local MongoDB connection string
      - `JWT_SECRET` for JWT signing
-     - `OPENAI_API_KEY` if you want real AI generation; if omitted, the app uses realistic local mock data
+    - `AI_PROVIDER=openrouter`, `OPENROUTER_API_KEY`, and `OPENROUTER_MODEL` for free-tier AI generation
      - `PORT` for the backend port (default 4000)
 4. Run backend in development:
    ```bash
@@ -97,4 +97,4 @@ This feature allows travelers to choose a mood and have the itinerary tuned acco
 - Frontend: deploy on Vercel
 - Backend: deploy on Render, Railway, or similar
 - Database: MongoDB Atlas
-- Secrets: store `MONGODB_URI`, `JWT_SECRET`, `OPENAI_API_KEY`
+- Secrets: store `MONGODB_URI`, `JWT_SECRET`, `OPENROUTER_API_KEY`

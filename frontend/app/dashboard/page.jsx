@@ -6,21 +6,13 @@ import { useRouter } from "next/navigation";
 import { apiDelete, apiGet } from "../../lib/api";
 import { useAuth } from "../../hooks/useAuth";
 
-interface TripSummary {
-  _id: string;
-  destination: string;
-  numberOfDays: number;
-  budgetType: string;
-  interests: string[];
-}
-
 export default function DashboardPage() {
   const router = useRouter();
   const { user, isLoading } = useAuth(true);
-  const [trips, setTrips] = useState<TripSummary[]>([]);
+  const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     if (!user && !isLoading) return;
@@ -29,9 +21,9 @@ export default function DashboardPage() {
       setError("");
       setLoading(true);
       try {
-        const result = await apiGet<{ trips: TripSummary[] }>("/api/trips");
+        const result = await apiGet("/api/trips");
         setTrips(result.trips);
-      } catch (err: any) {
+      } catch (err) {
         setError(err.message || "Unable to load trips");
       } finally {
         setLoading(false);
@@ -41,14 +33,14 @@ export default function DashboardPage() {
     fetchTrips();
   }, [user, isLoading]);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id) => {
     if (!confirm("Delete this trip?")) return;
     setDeletingId(id);
 
     try {
       await apiDelete(`/api/trips/${id}`);
       setTrips((current) => current.filter((trip) => trip._id !== id));
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to delete trip");
     } finally {
       setDeletingId(null);

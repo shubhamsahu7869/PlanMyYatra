@@ -13,7 +13,7 @@ export default function CreateTripPage() {
   const [destination, setDestination] = useState("");
   const [numberOfDays, setNumberOfDays] = useState(3);
   const [budgetType, setBudgetType] = useState("Medium");
-  const [interests, setInterests] = useState<string[]>(["Food", "Culture"]);
+  const [interests, setInterests] = useState(["Food", "Culture"]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -23,13 +23,13 @@ export default function CreateTripPage() {
     }
   }, [user, isLoading, router]);
 
-  const toggleInterest = (interest: string) => {
+  const toggleInterest = (interest) => {
     setInterests((current) =>
       current.includes(interest) ? current.filter((item) => item !== interest) : [...current, interest]
     );
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setLoading(true);
@@ -47,14 +47,14 @@ export default function CreateTripPage() {
     }
 
     try {
-      const response = await apiPost<{ trip: { _id: string } }>("/api/trips", {
+      const response = await apiPost("/api/trips", {
         destination,
         numberOfDays,
         budgetType,
         interests,
       });
       router.push(`/trips/${response.trip._id}`);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to create trip");
     } finally {
       setLoading(false);

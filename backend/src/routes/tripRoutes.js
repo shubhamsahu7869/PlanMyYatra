@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tripController_1 = require("../controllers/tripController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+router.use(authMiddleware_1.authenticate);
+router.get("/", tripController_1.getTrips);
+router.post("/", tripController_1.createTrip);
+router.get("/:id", tripController_1.getTripById);
+router.put("/:id", tripController_1.updateTrip);
+router.delete("/:id", tripController_1.deleteTrip);
+router.post("/:id/regenerate-day", tripController_1.regenerateDay);
+router.post("/:id/optimize-mood", tripController_1.optimizeMood);
+router.post("/:id/add-activity", tripController_1.addActivity);
+router.post("/:id/update-activity", tripController_1.updateActivity);
+router.post("/:id/delete-activity", tripController_1.deleteActivity);
+exports.default = router;

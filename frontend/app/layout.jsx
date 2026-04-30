@@ -1,13 +1,12 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "AI Travel Planner",
   description: "Plan trips with AI-generated itineraries, budgets, and hotel suggestions.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-slate-950 text-slate-100">

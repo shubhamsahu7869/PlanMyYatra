@@ -7,8 +7,8 @@ import { fetchCurrentUser, getToken } from "../lib/auth";
 export function useAuth(redirectToLogin = true) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<{ id: string; name: string; email: string } | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const token = getToken();

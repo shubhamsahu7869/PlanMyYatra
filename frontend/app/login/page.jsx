@@ -13,16 +13,16 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-      const response = await apiPost<{ token: string }>("/api/auth/login", { email, password });
+      const response = await apiPost("/api/auth/login", { email, password });
       saveToken(response.token);
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || "Unable to login");
     } finally {
       setLoading(false);
