@@ -13,7 +13,7 @@ export default function HomePage() {
               AI Travel Planner for complete, editable trip itineraries.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Build personalized trips with authentication, strict user data isolation, AI-generated day plans, local budget estimates, and hotel recommendations.
+              Turn a destination into a polished plan with places to visit, local costs, stays, and flexible day edits.
             </p>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">

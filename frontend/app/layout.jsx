@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 export const metadata = {
   title: "AI Travel Planner",
-  description: "Plan trips with AI-generated itineraries, budgets, and hotel suggestions.",
+  description: "Plan trips with places to visit, costs, stays, and editable daily schedules.",
 };
 
 export default function RootLayout({ children }) {

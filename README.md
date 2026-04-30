@@ -1,6 +1,6 @@
 # AI Travel Planner
 
-A production-ready full-stack travel planning web application designed for the Trao Full-Stack Engineering Assessment.
+A production-ready full-stack travel planning web application for creating AI-assisted trip plans.
 
 ## Overview
 
@@ -86,7 +86,7 @@ This project helps users register, log in, create trips, generate AI-powered iti
 
 ## AI Agent Design
 
-The AI service generates structured itinerary JSON and creates budget and hotel suggestions based on trip inputs. The backend service also supports day regeneration and mood optimization while preserving user data ownership.
+The AI service generates structured itinerary JSON and creates budget and stay suggestions based on trip inputs. The backend service also supports day regeneration and mood optimization while preserving user data ownership.
 
 ## Trip Mood Optimizer
 

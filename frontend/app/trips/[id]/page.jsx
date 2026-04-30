@@ -166,7 +166,7 @@ export default function TripDetailsPage() {
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-sky-400">AI itinerary workspace</p>
             <h1 className="mt-2 text-3xl font-semibold">{trip?.destination || "Trip details"}</h1>
-            <p className="mt-2 text-slate-400">Review the generated day plan, budget estimate, hotel suggestions, and itinerary controls.</p>
+            <p className="mt-2 text-slate-400">Review your plan, tune each day, compare costs, and refine the trip mood.</p>
           </div>
           <Link
             href="/dashboard"
@@ -201,7 +201,7 @@ export default function TripDetailsPage() {
                   </div>
                 </div>
                 <div className="mt-6 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
-                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Protected user-specific trip data</div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Saved privately to your account</div>
                   <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">Editable itinerary sections</div>
                   <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">AI regeneration and mood optimization</div>
                 </div>

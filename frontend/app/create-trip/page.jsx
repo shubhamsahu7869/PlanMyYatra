@@ -70,20 +70,20 @@ export default function CreateTripPage() {
               <p className="text-sm uppercase tracking-[0.3em] text-sky-400">Trip input form</p>
               <h1 className="mt-2 text-3xl font-semibold text-white">Generate a structured AI travel plan</h1>
               <p className="mt-2 max-w-3xl text-slate-400">
-                Enter the same details required in the assessment: destination, number of days, budget type, and interests.
+                Tell us where you want to go, how long you are staying, and what kind of trip you enjoy.
               </p>
             </div>
           </div>
 
           <div className="mb-7 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
-              AI returns day-by-day itinerary sections.
+              Discover exact places, activities, and local food stops.
             </div>
             <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
-              Budget is estimated by destination and preference.
+              See a practical cost breakdown in the right currency.
             </div>
             <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4">
-              Hotels are suggested for the destination and budget.
+              Get stay options that match your travel style.
             </div>
           </div>
 
