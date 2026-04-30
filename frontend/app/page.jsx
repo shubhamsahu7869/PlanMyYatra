@@ -11,7 +11,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-5">
             <BrandLogo />
-            <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
+            <h1 className="max-w-3xl text-3xl font-semibold leading-snug text-white sm:text-5xl">
               PlanMyYatra crafts complete, editable trip itineraries.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
